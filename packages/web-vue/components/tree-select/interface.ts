@@ -1,8 +1,13 @@
 import { CSSProperties } from 'vue';
-import { FieldNames, TreeNodeData, TreeProps } from '../tree/interface';
+import {
+  FieldNames,
+  TreeNodeData,
+  TreeNodeKey,
+  TreeProps,
+} from '../tree/interface';
 
 export interface LabelValue {
-  value: string;
+  value: TreeNodeKey;
   label: string;
 }
 

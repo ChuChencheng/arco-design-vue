@@ -86,7 +86,12 @@ import Panel from './panel.vue';
 import { getPrefixCls } from '../_utils/global-config';
 import useSelectedState from './hooks/use-selected-state';
 import useTreeData from '../tree/hooks/use-tree-data';
-import { FieldNames, TreeNodeData, TreeProps } from '../tree/interface';
+import {
+  FieldNames,
+  TreeNodeKey,
+  TreeNodeData,
+  TreeProps,
+} from '../tree/interface';
 import { isArray, isEmptyObject } from '../_utils/is';
 import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
@@ -421,11 +426,11 @@ export default defineComponent({
         })
       );
 
-    const setSelectedKeys = (newVal: string[]) => {
+    const setSelectedKeys = (newVal: TreeNodeKey[]) => {
       setLocalSelectedKeys(newVal);
 
       nextTick(() => {
-        let emitValue: string | string[] | LabelValue | LabelValue[] =
+        let emitValue: TreeNodeKey | TreeNodeKey[] | LabelValue | LabelValue[] =
           labelInValue.value ? selectedValue.value : newVal;
 
         emitValue = isMultiple.value ? emitValue : emitValue[0];
